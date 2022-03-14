@@ -12,7 +12,7 @@
 
 ## Live Demo
 
-For a live demo of the Portfolio [click here](https://jsug9.github.io/).
+For a live demo of the Portfolio [click here](https://jsug9.github.io/Awesome-Books/).
 
 ## Author
 
@@ -21,11 +21,15 @@ For a live demo of the Portfolio [click here](https://jsug9.github.io/).
 - GitHub: [@jsug9](https://github.com/jsug9)
 - LinkedIn: [Augusto Galindo](https://www.linkedin.com/in/augustogalindo/)
 
+👤 **Aminat Buhari**
+
+- GitHub: [@AminaBuhari](https://github.com/AminaBuhari)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/jsug9/Project/issues).
+Feel free to check the [issues page](https://github.com/jsug9/Awesome-Books/issues).
 
 ## Show your support
 
