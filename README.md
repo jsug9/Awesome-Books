@@ -7,7 +7,7 @@
 ## Built With
 
 - HTML
-- CSS
+- CSSw
 - JavaScript
 
 ## Live Demo
