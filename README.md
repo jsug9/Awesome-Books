@@ -6,7 +6,7 @@
 
 ## Built With
 
-- HTML
+- HTMLs
 - CSS
 - JavaScript
 
