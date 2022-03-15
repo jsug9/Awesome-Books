@@ -74,6 +74,6 @@ if (storageAvailable('localStorage')) {
     setItem();
   });
 
-  window.localStorage.clear();
-  setItem();
+  // window.localStorage.clear();
+  // setItem();
 }
