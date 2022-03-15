@@ -23,7 +23,7 @@ class Books {
   delete(index) {
     this.collection.splice(index, 1);
     this.save();
-    window.location.reload()
+    window.location.reload();
   }
 
   checkStorage() {
@@ -70,9 +70,9 @@ function storageAvailable(type) {
 }
 
 if (storageAvailable('localStorage')) {
-  booksCollection.checkStorage()
+  booksCollection.checkStorage();
 
-  booksCollection.showCollection()
+  booksCollection.showCollection();
 
   for (let i = 0; i < booksCollection.collection.length; i += 1) {
     const removeButtons = document.querySelectorAll('.remove-button');
