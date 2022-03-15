@@ -5,29 +5,29 @@
   gap: 5px;
 }
 
-h1{
+h1 {
   text-align: center;
   font-family: "lato", sans-serif;
   font-size: 20px;
 }
 
-hr{
+hr {
   margin-top: 30px;
   width: 10%;
   border: 2px solid black;
 }
 
-.fill{
+.fill {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-h2{
+h2 {
   font-family: "lato", sans-serif;
 }
 
-.border{
+.border {
   border: 5px solid black;
   height: 1.3rem;
 }
@@ -39,13 +39,13 @@ h2{
   background-color: white;
 }
 
-#books{
+#books {
   border: 1px solid black;
   width: 70%;
   margin: auto;
 }
 
-.book-container{
+.book-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -61,20 +61,19 @@ h2{
   background: rgb(156, 156, 156);
 }
 
-.each-book{
+.each-book {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.book-title{
+.book-title {
   font-family: "lato", sans-serif;
   font-size: 14px;
 }
 
-.remove-button{
+.remove-button {
   width: fit-content;
-  height: fit-content;
   padding: 6px;
   border: 5px solid black;
 }
