@@ -3,7 +3,6 @@
   width: 50%;
   flex-direction: column;
   gap: 5px;
-  
 }
 
 h1{
@@ -17,6 +16,7 @@ hr{
   width: 10%;
   border: 2px solid black;
 }
+
 .fill{
   display: flex;
   flex-direction: column;
@@ -29,6 +29,7 @@ h2{
 
 .border{
   border: 5px solid black;
+  height: 1.3rem;
 }
 
 #submit {
@@ -40,9 +41,7 @@ h2{
 
 #books{
   border: 1px solid black;
-  padding: 10px;
   width: 70%;
-  padding: 10px;
   margin: auto;
 }
 
@@ -51,11 +50,21 @@ h2{
   flex-direction: column;
   gap: 20px;
   justify-content: space-between;
+  padding: 0.3rem;
+}
+
+.book-container:nth-child(even) {
+  background: white;
+}
+
+.book-container:nth-child(odd) {
+  background: rgb(156, 156, 156);
 }
 
 .each-book{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .book-title{
