@@ -1,3 +1,22 @@
+function Book(title, author) {
+  this.title = title;
+  this.author = author;
+}
+
+class Books {
+  constructor() {
+    this.books = [];
+  }
+
+  add(book) {
+    this.books.push(book);
+  }
+
+  delete(index) {
+    this.books.splice(index, 1)
+  }
+}
+
 const newCollection = [];
 
 let collection = [
@@ -33,7 +52,7 @@ function storageAvailable(type) {
   }
 }
 
-function setItem() {
+function save() {
   window.localStorage.setItem('bookCollection', JSON.stringify(collection));
   for (let i = 0; i < collection.length; i += 1) {
     window.localStorage.setItem(i.toString(), JSON.stringify(collection[i]));
@@ -64,16 +83,16 @@ if (storageAvailable('localStorage')) {
     const removeButtons = document.querySelectorAll('.remove-button');
     removeButtons[i].addEventListener('click', () => {
       collection.splice(i, 1);
-      setItem();
+      save();
       window.location.reload();
     });
   }
 
   form.addEventListener('submit', () => {
     collection.push({ title: formTitle.value, author: formAuthor.value });
-    setItem();
+    save();
   });
 
   // window.localStorage.clear();
-  // setItem();
+  // save();
 }
