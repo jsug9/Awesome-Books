@@ -29,34 +29,51 @@ function save() {
 
 // -----------------
 
-function Book(title, author) {
-  this.title = title;
-  this.author = author;
-}
+// function Book(title, author) {
+//   this.title = title;
+//   this.author = author;
+// }
 class Books {
   constructor() {
-    this.books = [];
+    this.collection = [];
   }
 
   save() {
-    window.localStorage.setItem('bookCollection', JSON.stringify(this.books));
+    window.localStorage.setItem('bookCollection', JSON.stringify(this.collection));
     for (let i = 0; i < this.books.length; i += 1) {
-      window.localStorage.setItem(i.toString(), JSON.stringify(this.books[i]));
+      window.localStorage.setItem(i.toString(), JSON.stringify(this.collection[i]));
     }
   }
 
   add(book) {
-    this.books.push(book);
+    this.collection.push(book);
   }
 
   delete(index) {
-    this.books.splice(index, 1);
+    this.collection.splice(index, 1);
     this.save();
     window.location.reload()
   }
 
   checkStorage() {
-    
+    if (window.localStorage.getItem('bookCollection') !== null) {
+      const array = JSON.parse(window.localStorage.getItem('bookCollection'));
+      for (let i = 0; i < array.length; i += 1) {
+        newCollection[i] = JSON.parse(window.localStorage.getItem(i.toString()));
+      }
+      this.collection = newCollection;
+    }
+  }
+
+  show(index) {
+    return `  
+      <div class="book-container">
+        <p class="book-title">${this.collection[index].title}</p>
+        <p class="book-author">${this.collection[index].author}</p>
+        <button type="button" class="remove-button">Remove</button>
+        <hr/>
+      </div>
+    `;
   }
 }
 
