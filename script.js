@@ -1,4 +1,6 @@
-const collection = [
+const newCollection = [];
+
+let collection = [
   {
     title: '1',
     author: 'Teasteroo Testyy',
@@ -10,12 +12,9 @@ const collection = [
 ];
 
 const books = document.getElementById('books');
-const titleForm = document.getElementById('title');
-const authorForm = document.getElementById('author');
-const form = document.getElementById('add-book');
+const formTitle = document.getElementById('title');
+const formAuthor = document.getElementById('author');
 const submitButton = document.getElementById('submit');
-const removeButtons = document.querySelectorAll('.remove-button');
-const bookContainer = document.querySelectorAll('.book-container');
 
 function storageAvailable(type) {
   let storage;
@@ -34,68 +33,47 @@ function storageAvailable(type) {
   }
 }
 
-function formValues() {
-  const formValues = {
-    title: titleForm.value,
-    author: authorForm.value,
-  };
-
-  localStorage.setItem('formValues', JSON.stringify(formValues));
-}
-
-function checkLocalStorage() {
-  let title = '';
-  let author = '';
-
-  if (JSON.parse(localStorage.getItem('formValues')) === null) {
-    title = '';
-    author = '';
-  } else {
-    ({ title, author } = JSON.parse(localStorage.getItem('formValues')));
-  }
-
-  if (title !== 'empty' || author !== 'empty') {
-    titleForm.value = title;
-    authorForm.value = author;
+function setItem() {
+  window.localStorage.setItem('bookCollection', JSON.stringify(collection));
+  for (let i = 0; i < collection.length; i += 1) {
+    window.localStorage.setItem(i.toString(), JSON.stringify(collection[i]));
   }
 }
 
 if (storageAvailable('localStorage')) {
-  titleForm.addEventListener('input', formValues);
-  authorForm.addEventListener('input', formValues);
+  if (window.localStorage.getItem('bookCollection') !== null) {
+    const array = JSON.parse(window.localStorage.getItem('bookCollection'));
+    for (let i = 0; i < array.length; i += 1) {
+      newCollection[i] = JSON.parse(window.localStorage.getItem(i.toString()));
+    }
+    collection = newCollection;
+  }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    checkLocalStorage();
+  for (let i = 0; i < collection.length; i += 1) {
+    books.innerHTML += `  
+      <div class="book-container">
+        <p class="book-title">${collection[i].title}</p>
+        <p class="book-author">${collection[i].author}</p>
+        <button type="button" class="remove-button">Remove</button>
+        <hr/>
+      </div>
+    `;
+  }
+
+  for (let i = 0; i < collection.length; i += 1) {
+    const removeButton = document.querySelectorAll('.remove-button');
+    removeButton[i].addEventListener('click', () => {
+      collection.splice(i, 1);
+      setItem();
+      window.location.reload();
+    });
+  }
+
+  submitButton.addEventListener('click', () => {
+    collection.push({ title: formTitle.value, author: formAuthor.value });
+    setItem();
   });
+
+  window.localStorage.clear();
+  setItem();
 }
-
-function addBook(book) {
-  const cardHTML = `
-  <div class="book-container">
-    <p>${book.title}</p>
-    <p>${book.author}</p>
-    <button class="remove-button">Remove</button>
-    <hr/>
-  </div>
-  `;
-  books.innerHTML += cardHTML;
-}
-
-collection.forEach((book) => {
-  addBook(book);
-});
-
-submitButton.addEventListener('click', () => {
-  const book = { title: titleForm.value, author: authorForm.value };
-  collection.push(book);
-  books.location.reload();
-  console.log(collection);
-});
-
-removeButtons.forEach((button, index) => {
-  button.addEventListener('click', () => {
-    collection.splice(index, 1);
-    books.location.reload();
-    console.log(collection);
-  });
-});
