@@ -1,11 +1,11 @@
 const collection = [
   {
-      title: '1', 
-      author: 'Teasteroo Testyy'
-  }, 
+    title: '1',
+    author: 'Teasteroo Testyy',
+  },
   {
-      title: '2', 
-      author: 'Teasteroo Testyy'
+    title: '2',
+    author: 'Teasteroo Testyy',
   },
 ];
 
@@ -63,7 +63,7 @@ function checkLocalStorage() {
 if (storageAvailable('localStorage')) {
   titleForm.addEventListener('input', formValues);
   authorForm.addEventListener('input', formValues);
-  
+
   document.addEventListener('DOMContentLoaded', () => {
     checkLocalStorage();
   });
@@ -78,24 +78,24 @@ function addBook(book) {
     <hr/>
   </div>
   `;
-  books.insertAdjacentHTML("beforeend", cardHTML);
+  books.innerHTML += cardHTML;
 }
 
 collection.forEach((book) => {
- addBook(book);
-})
+  addBook(book);
+});
 
 submitButton.addEventListener('click', () => {
-    const book = {title: titleForm.value, author: authorForm.value};
-    collection.push(book);
-    books.location.reload();
-    console.log(collection);
+  const book = { title: titleForm.value, author: authorForm.value };
+  collection.push(book);
+  books.location.reload();
+  console.log(collection);
 });
 
 removeButtons.forEach((button, index) => {
   button.addEventListener('click', () => {
     collection.splice(index, 1);
     books.location.reload();
-    console.log(collection)
-  })
-})
+    console.log(collection);
+  });
+});
