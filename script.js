@@ -61,8 +61,8 @@ if (storageAvailable('localStorage')) {
   }
 
   for (let i = 0; i < collection.length; i += 1) {
-    const removeButton = document.querySelectorAll('.remove-button');
-    removeButton[i].addEventListener('click', () => {
+    const removeButtons = document.querySelectorAll('.remove-button');
+    removeButtons[i].addEventListener('click', () => {
       collection.splice(i, 1);
       setItem();
       window.location.reload();
