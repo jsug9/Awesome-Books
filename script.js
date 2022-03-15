@@ -14,7 +14,7 @@ let collection = [
 const books = document.getElementById('books');
 const formTitle = document.getElementById('title');
 const formAuthor = document.getElementById('author');
-const submitButton = document.getElementById('submit');
+const form = document.getElementById('form');
 
 function storageAvailable(type) {
   let storage;
@@ -69,7 +69,7 @@ if (storageAvailable('localStorage')) {
     });
   }
 
-  submitButton.addEventListener('click', () => {
+  form.addEventListener('submit', () => {
     collection.push({ title: formTitle.value, author: formAuthor.value });
     setItem();
   });
