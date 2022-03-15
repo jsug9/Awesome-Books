@@ -1,35 +1,3 @@
-function Book(title, author) {
-  this.title = title;
-  this.author = author;
-}
-
-class Books {
-  constructor() {
-    this.books = [];
-  }
-
-  add(book) {
-    this.books.push(book);
-  }
-
-  delete(index) {
-    this.books.splice(index, 1)
-  }
-}
-
-const newCollection = [];
-
-let collection = [
-  {
-    title: '1',
-    author: 'Teasteroo Testyy',
-  },
-  {
-    title: '2',
-    author: 'Teasteroo Testyy',
-  },
-];
-
 const books = document.getElementById('books');
 const formTitle = document.getElementById('title');
 const formAuthor = document.getElementById('author');
@@ -58,6 +26,54 @@ function save() {
     window.localStorage.setItem(i.toString(), JSON.stringify(collection[i]));
   }
 }
+
+// -----------------
+
+function Book(title, author) {
+  this.title = title;
+  this.author = author;
+}
+class Books {
+  constructor() {
+    this.books = [];
+  }
+
+  save() {
+    window.localStorage.setItem('bookCollection', JSON.stringify(this.books));
+    for (let i = 0; i < this.books.length; i += 1) {
+      window.localStorage.setItem(i.toString(), JSON.stringify(this.books[i]));
+    }
+  }
+
+  add(book) {
+    this.books.push(book);
+  }
+
+  delete(index) {
+    this.books.splice(index, 1);
+    this.save();
+    window.location.reload()
+  }
+
+  checkStorage() {
+    
+  }
+}
+
+//-----------------
+
+const newCollection = [];
+
+let collection = [
+  {
+    title: '1',
+    author: 'Teasteroo Testyy',
+  },
+  {
+    title: '2',
+    author: 'Teasteroo Testyy',
+  },
+];
 
 if (storageAvailable('localStorage')) {
   if (window.localStorage.getItem('bookCollection') !== null) {
