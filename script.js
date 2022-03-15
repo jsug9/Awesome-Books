@@ -1,56 +1,20 @@
+const newCollection = [];
+
+let collection = [
+  {
+    title: '1',
+    author: 'Teasteroo Testyy',
+  },
+  {
+    title: '2',
+    author: 'Teasteroo Testyy',
+  },
+];
+
 const books = document.getElementById('books');
 const formTitle = document.getElementById('title');
 const formAuthor = document.getElementById('author');
 const form = document.getElementById('form');
-
-const newCollection = [];
-class Books {
-  constructor() {
-    this.collection = [];
-  }
-
-  save() {
-    window.localStorage.setItem('bookCollection', JSON.stringify(this.collection));
-    for (let i = 0; i < this.collection.length; i += 1) {
-      window.localStorage.setItem(i.toString(), JSON.stringify(this.collection[i]));
-    }
-  }
-
-  add(book) {
-    this.collection.push(book);
-  }
-
-  delete(index) {
-    this.collection.splice(index, 1);
-    this.save();
-    window.location.reload()
-  }
-
-  checkStorage() {
-    if (window.localStorage.getItem('bookCollection') !== null) {
-      const array = JSON.parse(window.localStorage.getItem('bookCollection'));
-      for (let i = 0; i < array.length; i += 1) {
-        newCollection[i] = JSON.parse(window.localStorage.getItem(i.toString()));
-      }
-      this.collection = newCollection;
-    }
-  }
-
-  showCollection() {
-    for (let i = 0; i < this.collection.length; i += 1) {
-      books.innerHTML += `  
-        <div class="book-container">
-          <p class="book-title">${this.collection[i].title}</p>
-          <p class="book-author">${this.collection[i].author}</p>
-          <button type="button" class="remove-button">Remove</button>
-          <hr/>
-        </div>
-      `;
-    }
-  }
-}
-
-const booksCollection = new Books();
 
 function storageAvailable(type) {
   let storage;
@@ -69,23 +33,47 @@ function storageAvailable(type) {
   }
 }
 
+function setItem() {
+  window.localStorage.setItem('bookCollection', JSON.stringify(collection));
+  for (let i = 0; i < collection.length; i += 1) {
+    window.localStorage.setItem(i.toString(), JSON.stringify(collection[i]));
+  }
+}
+
 if (storageAvailable('localStorage')) {
-  booksCollection.checkStorage()
+  if (window.localStorage.getItem('bookCollection') !== null) {
+    const array = JSON.parse(window.localStorage.getItem('bookCollection'));
+    for (let i = 0; i < array.length; i += 1) {
+      newCollection[i] = JSON.parse(window.localStorage.getItem(i.toString()));
+    }
+    collection = newCollection;
+  }
 
-  booksCollection.showCollection()
+  for (let i = 0; i < collection.length; i += 1) {
+    books.innerHTML += `  
+      <div class="book-container">
+        <div class = "each-book">
+          <p class="book-title">"${collection[i].title}" by ${collection[i].author}</p> 
+          <button type="button" class="remove-button">Remove</button>
+        </div>
+      </div>
+    `;
+  }
 
-  for (let i = 0; i < booksCollection.collection.length; i += 1) {
+  for (let i = 0; i < collection.length; i += 1) {
     const removeButtons = document.querySelectorAll('.remove-button');
     removeButtons[i].addEventListener('click', () => {
-      booksCollection.delete(i);
+      collection.splice(i, 1);
+      setItem();
+      window.location.reload();
     });
   }
 
   form.addEventListener('submit', () => {
-    booksCollection.add({ title: formTitle.value, author: formAuthor.value });
-    booksCollection.save();
+    collection.push({ title: formTitle.value, author: formAuthor.value });
+    setItem();
   });
 
-  // window.localStorage.clear();
-  // save();
+  window.localStorage.clear();
+  setItem();
 }
