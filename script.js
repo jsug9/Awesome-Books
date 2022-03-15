@@ -3,36 +3,7 @@ const formTitle = document.getElementById('title');
 const formAuthor = document.getElementById('author');
 const form = document.getElementById('form');
 
-function storageAvailable(type) {
-  let storage;
-  const x = '__storage_test__';
-
-  try {
-    storage = window[type];
-    storage.setItem(x, x);
-    storage.removeItem(x);
-    return true;
-  } catch (e) {
-    return e instanceof DOMException && (
-      // everything except Firefox
-      e.code === 22 || e.code === 1014 || e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED') && (storage && storage.length !== 0
-    );
-  }
-}
-
-function save() {
-  window.localStorage.setItem('bookCollection', JSON.stringify(collection));
-  for (let i = 0; i < collection.length; i += 1) {
-    window.localStorage.setItem(i.toString(), JSON.stringify(collection[i]));
-  }
-}
-
-// -----------------
-
-// function Book(title, author) {
-//   this.title = title;
-//   this.author = author;
-// }
+const newCollection = [];
 class Books {
   constructor() {
     this.collection = [];
@@ -40,7 +11,7 @@ class Books {
 
   save() {
     window.localStorage.setItem('bookCollection', JSON.stringify(this.collection));
-    for (let i = 0; i < this.books.length; i += 1) {
+    for (let i = 0; i < this.collection.length; i += 1) {
       window.localStorage.setItem(i.toString(), JSON.stringify(this.collection[i]));
     }
   }
@@ -65,65 +36,54 @@ class Books {
     }
   }
 
-  show(index) {
-    return `  
-      <div class="book-container">
-        <p class="book-title">${this.collection[index].title}</p>
-        <p class="book-author">${this.collection[index].author}</p>
-        <button type="button" class="remove-button">Remove</button>
-        <hr/>
-      </div>
-    `;
+  showCollection() {
+    for (let i = 0; i < this.collection.length; i += 1) {
+      books.innerHTML += `  
+        <div class="book-container">
+          <p class="book-title">${this.collection[i].title}</p>
+          <p class="book-author">${this.collection[i].author}</p>
+          <button type="button" class="remove-button">Remove</button>
+          <hr/>
+        </div>
+      `;
+    }
   }
 }
 
-//-----------------
+const booksCollection = new Books();
 
-const newCollection = [];
+function storageAvailable(type) {
+  let storage;
+  const x = '__storage_test__';
 
-let collection = [
-  {
-    title: '1',
-    author: 'Teasteroo Testyy',
-  },
-  {
-    title: '2',
-    author: 'Teasteroo Testyy',
-  },
-];
+  try {
+    storage = window[type];
+    storage.setItem(x, x);
+    storage.removeItem(x);
+    return true;
+  } catch (e) {
+    return e instanceof DOMException && (
+      // everything except Firefox
+      e.code === 22 || e.code === 1014 || e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED') && (storage && storage.length !== 0
+    );
+  }
+}
 
 if (storageAvailable('localStorage')) {
-  if (window.localStorage.getItem('bookCollection') !== null) {
-    const array = JSON.parse(window.localStorage.getItem('bookCollection'));
-    for (let i = 0; i < array.length; i += 1) {
-      newCollection[i] = JSON.parse(window.localStorage.getItem(i.toString()));
-    }
-    collection = newCollection;
-  }
+  booksCollection.checkStorage()
 
-  for (let i = 0; i < collection.length; i += 1) {
-    books.innerHTML += `  
-      <div class="book-container">
-        <p class="book-title">${collection[i].title}</p>
-        <p class="book-author">${collection[i].author}</p>
-        <button type="button" class="remove-button">Remove</button>
-        <hr/>
-      </div>
-    `;
-  }
+  booksCollection.showCollection()
 
-  for (let i = 0; i < collection.length; i += 1) {
+  for (let i = 0; i < booksCollection.collection.length; i += 1) {
     const removeButtons = document.querySelectorAll('.remove-button');
     removeButtons[i].addEventListener('click', () => {
-      collection.splice(i, 1);
-      save();
-      window.location.reload();
+      booksCollection.delete(i);
     });
   }
 
   form.addEventListener('submit', () => {
-    collection.push({ title: formTitle.value, author: formAuthor.value });
-    save();
+    booksCollection.add({ title: formTitle.value, author: formAuthor.value });
+    booksCollection.save();
   });
 
   // window.localStorage.clear();
