@@ -51,6 +51,14 @@ hr {
   border: 3px solid black;
 }
 
+.remove-button:hover {
+  background-color: rgb(223, 221, 221);
+}
+
+.remove-button:active {
+  background-color: white;
+}
+
 /* Add Book Section */
 .add-book {
   display: flex;
