@@ -15,8 +15,7 @@ hr {
 
 /* Books List section */
 #books {
-  border: 1px solid black;
-  width: 70%;
+  border: 4px solid black;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -25,6 +24,7 @@ hr {
 .book-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0.3rem 1rem;
 }
 
@@ -43,8 +43,8 @@ hr {
 
 .remove-button {
   width: fit-content;
-  padding: 0.3rem 1.5rem;
-  border: 5px solid black;
+  height: 40px;
+  border: 3px solid black;
 }
 
 /* Add Book Section */
@@ -56,22 +56,20 @@ hr {
 
 #form {
   display: flex;
-  width: 50%;
   flex-direction: column;
   gap: 0.5rem;
 }
 
 .form-input {
-  border: 5px solid black;
+  border: 4px solid black;
   padding: 0.5rem;
 }
 
 #submit {
-  padding: 0.5rem;
+  padding: 0.5rem 3rem;
   font-weight: bold;
-  width: 30%;
   align-self: end;
-  border: 5px solid black;
+  border: 4px solid black;
   background-color: white;
 }
 
@@ -83,4 +81,32 @@ hr {
 #submit:active {
   background: rgb(121, 119, 119);
   color: white;
+}
+
+@media (max-width: 768px) {
+  #books {
+    width: 95%;
+  }
+
+  .remove-button {
+    padding: 0 1rem;
+  }
+
+  #form {
+    width: 95%;
+  }
+}
+
+@media (min-width: 768px) {
+  #books {
+    width: 70%;
+  }
+
+  .remove-button {
+    padding: 0 1.5rem;
+  }
+
+  #form {
+    width: 50%;
+  }
 }
