@@ -1,5 +1,79 @@
 #form {
   display: flex;
-  width: 20%;
+  width: 50%;
   flex-direction: column;
+  gap: 5px;
+}
+
+h1 {
+  text-align: center;
+  font-family: "lato", sans-serif;
+  font-size: 20px;
+}
+
+hr {
+  margin-top: 30px;
+  width: 10%;
+  border: 2px solid black;
+}
+
+.fill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  font-family: "lato", sans-serif;
+}
+
+.border {
+  border: 5px solid black;
+  height: 1.3rem;
+}
+
+#submit {
+  width: 30%;
+  align-self: end;
+  border: 5px solid black;
+  background-color: white;
+}
+
+#books {
+  border: 1px solid black;
+  width: 70%;
+  margin: auto;
+}
+
+.book-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 0.3rem;
+}
+
+.book-container:nth-child(even) {
+  background: white;
+}
+
+.book-container:nth-child(odd) {
+  background: rgb(156, 156, 156);
+}
+
+.each-book {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-title {
+  font-family: "lato", sans-serif;
+  font-size: 14px;
+}
+
+.remove-button {
+  width: fit-content;
+  padding: 6px;
+  border: 5px solid black;
 }
