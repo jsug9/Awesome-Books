@@ -48,6 +48,8 @@ a:active {
 
 /* Date section */
 .date-section {
+  margin: auto;
+  width: 99%;
   margin-bottom: 50px;
 }
 

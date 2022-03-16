@@ -3,6 +3,13 @@ const formTitle = document.getElementById('title');
 const formAuthor = document.getElementById('author');
 const form = document.getElementById('form');
 
+const today = new Date();
+const date = document.getElementById('date');
+date.innerHTML = today.toDateString();
+
+const navItems = document.querySelectorAll('.nav-item');
+const sectionBooks = document.querySelectorAll('.sect');
+
 const newCollection = [];
 class Books {
   constructor() {
@@ -68,6 +75,8 @@ function storageAvailable(type) {
 }
 
 if (storageAvailable('localStorage')) {
+  booksCollection.add({ title: 'book 1', author: 'author 1' });
+  booksCollection.add({ title: 'book 2', author: 'author 2' });
   booksCollection.checkStorage();
 
   booksCollection.showCollection();
@@ -82,18 +91,13 @@ if (storageAvailable('localStorage')) {
   form.addEventListener('submit', () => {
     booksCollection.add({ title: formTitle.value, author: formAuthor.value });
     booksCollection.save();
+    formTitle.value = ''
+    formAuthor.value = ''
   });
 
   // window.localStorage.clear();
   // save();
 }
-
-const today = new Date();
-const date = document.getElementById('date');
-date.innerHTML = today.toDateString();
-
-const navItems = document.querySelectorAll('.nav-item');
-const sectionBooks = document.querySelectorAll('.sect');
 
 navItems.forEach((item, index) => {
   item.addEventListener('click', () => {
@@ -102,4 +106,8 @@ navItems.forEach((item, index) => {
       sectionBooks[index].style.display = 'flex';
     }
   });
+});
+
+navItems[0].addEventListener('click', () => {
+  window.location.reload()
 });
