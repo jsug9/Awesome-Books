@@ -87,7 +87,7 @@ hr {
   color: white;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   #books {
     width: 95%;
   }
@@ -101,7 +101,7 @@ hr {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 700px) {
   #books {
     width: 70%;
   }
