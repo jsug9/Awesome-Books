@@ -40,10 +40,8 @@ class Books {
     for (let i = 0; i < this.collection.length; i += 1) {
       books.innerHTML += `  
       <div class="book-container">
-        <div class = "each-book">
-          <p class="book-title">"${this.collection[i].title}" by ${this.collection[i].author}</p> 
-          <button type="button" class="remove-button">Remove</button>
-        </div>
+        <p class="book-title">"${this.collection[i].title}" by ${this.collection[i].author}</p> 
+        <button type="button" class="remove-button">Remove</button>
       </div>
       `;
     }
