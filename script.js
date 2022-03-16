@@ -87,3 +87,13 @@ if (storageAvailable('localStorage')) {
   // window.localStorage.clear();
   // save();
 }
+
+const list = document.getElementById('list');
+const addNew = document.getElementById('add-new')
+const contact = document.getElementById('contact')
+
+
+const date = document.getElementById('date');
+date.innerHTML = new Date();
+
+const sectionBooks = document.querySelectorAll('sect');

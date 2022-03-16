@@ -18,21 +18,24 @@
   <body id="body">
     <header>
       <h1>Awesome books</h1>
-      <navbar>
-        <ul>
-          <li>Hello</li>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="#" id="list">List</a></li>
+          <li class="hr" id="add-new"><a href="#">Add new</a></li>
+          <li><a href="#" id="contact">Contact</a></li>
         </ul>
-      </navbar>
+      </nav>
     </header>
+    <section class="date-section">
+      <p id="date"></p>
+    </section>
 
-    <section id="books">
+    <section class="books sect">
       <h2>All Awesome Books</h2>
       <div id="books-container"></div>
     </section>
 
-    <hr/>
-
-    <section class="add-book">
+    <section class="add-book sect">
       <h2>Add a new book</h2>
       <form id="form">
         <input
@@ -53,8 +56,17 @@
       </form>
     </section>
 
-    <section class="contact-info">
-
+    <section class="contact-info sect">
+      <h2>Contact information</h2>
+      <p>
+        Do you have any questions or you just want to say "Hello"? <br />
+        You can reach out to us.
+      </p>
+      <ul>
+        <li>Our e-mail mail@mail.com</li>
+        <li>Our phone number: 0043586534678337</li>
+        <li>Our address Block 5 Wakanda, Africa</li>
+      </ul>
     </section>
 
     <footer>

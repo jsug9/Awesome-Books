@@ -1,6 +1,6 @@
 h1 {
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 h2 {
@@ -14,8 +14,55 @@ hr {
   border: 2px solid black;
 }
 
+/* Nav-List Section */
+
+header{
+  display: flex;
+  flex-wrap: no-wrap;
+  justify-content: space-between;
+  align-items: center;
+  border: 3px solid black;
+  padding: 0px 10px;
+
+}
+
+.nav-list{
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  padding-right: 20px;
+}
+
+a{
+  color: black;
+  text-decoration: none;
+}
+
+
+a:active {
+  color: blueviolet;
+
+}
+
+.hr{
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  padding: 0px 20px;
+}
+
+
+
+/* Date section */
+
+.date-section{
+  margin-bottom: 50px;
+}
+#date{
+  display: block;
+  float:right;
+}
 /* Books List section */
-#books {
+.books {
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -61,7 +108,7 @@ hr {
 
 /* Add Book Section */
 .add-book {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
 }
@@ -95,8 +142,24 @@ hr {
   color: white;
 }
 
+/* Contact info */
+.contact-info{
+  margin: auto;
+  width: 70%;
+  display: none;
+  flex-direction: column;
+}
+
+
+
+footer {
+  border: 2px solid black;
+  padding: 5px 20px;
+  margin-top: 100px;
+}
+
 @media (max-width: 700px) {
-  #books {
+  .books {
     width: 95%;
   }
 
@@ -110,7 +173,7 @@ hr {
 }
 
 @media (min-width: 700px) {
-  #books {
+  .books {
     width: 70%;
   }
 
@@ -122,3 +185,5 @@ hr {
     width: 50%;
   }
 }
+
+
