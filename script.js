@@ -88,8 +88,9 @@ if (storageAvailable('localStorage')) {
   // save();
 }
 
+const today = new Date();
 const date = document.getElementById('date');
-date.innerHTML = new Date();
+date.innerHTML = today.toDateString();
 
 const navItems = document.querySelectorAll('.nav-item');
 const sectionBooks = document.querySelectorAll('.sect');
