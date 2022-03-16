@@ -91,8 +91,8 @@ if (storageAvailable('localStorage')) {
   form.addEventListener('submit', () => {
     booksCollection.add({ title: formTitle.value, author: formAuthor.value });
     booksCollection.save();
-    formTitle.value = ''
-    formAuthor.value = ''
+    formTitle.value = '';
+    formAuthor.value = '';
   });
 
   // window.localStorage.clear();
@@ -109,5 +109,5 @@ navItems.forEach((item, index) => {
 });
 
 navItems[0].addEventListener('click', () => {
-  window.location.reload()
+  window.location.reload();
 });
