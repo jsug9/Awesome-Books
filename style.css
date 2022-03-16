@@ -16,55 +16,49 @@ hr {
 
 /* Nav-List Section */
 
-header{
+header {
   display: flex;
-  flex-wrap: no-wrap;
   justify-content: space-between;
   align-items: center;
   border: 3px solid black;
-  padding: 0px 10px;
-
+  padding: 0 10px;
 }
 
-.nav-list{
+.nav-list {
   list-style: none;
   display: flex;
   gap: 10px;
   padding-right: 20px;
 }
 
-a{
+a {
   color: black;
   text-decoration: none;
 }
 
-
 a:active {
   color: blueviolet;
-
 }
 
-.hr{
+#add-new {
   border-left: 2px solid black;
   border-right: 2px solid black;
-  padding: 0px 20px;
+  padding: 0 20px;
 }
-
-
 
 /* Date section */
-
-.date-section{
+.date-section {
   margin-bottom: 50px;
 }
-#date{
+
+#date {
   display: block;
-  float:right;
+  float: right;
 }
+
 /* Books List section */
 .books {
   margin: auto;
-  display: flex;
   flex-direction: column;
 }
 
@@ -143,14 +137,12 @@ a:active {
 }
 
 /* Contact info */
-.contact-info{
+.contact-info {
   margin: auto;
   width: 70%;
   display: none;
   flex-direction: column;
 }
-
-
 
 footer {
   border: 2px solid black;
@@ -185,5 +177,3 @@ footer {
     width: 50%;
   }
 }
-
-

@@ -88,12 +88,17 @@ if (storageAvailable('localStorage')) {
   // save();
 }
 
-const list = document.getElementById('list');
-const addNew = document.getElementById('add-new')
-const contact = document.getElementById('contact')
-
-
 const date = document.getElementById('date');
 date.innerHTML = new Date();
 
-const sectionBooks = document.querySelectorAll('sect');
+const navItems = document.querySelectorAll('.nav-item');
+const sectionBooks = document.querySelectorAll('.sect');
+
+navItems.forEach((item, index) => {
+  item.addEventListener('click', () => {
+    for (let i = 0; i < navItems.length; i += 1) {
+      sectionBooks[i].style.display = 'none';
+      sectionBooks[index].style.display = 'flex';
+    }
+  });
+});
