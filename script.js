@@ -1,7 +1,14 @@
-const books = document.getElementById('books');
+const books = document.getElementById('books-container');
 const formTitle = document.getElementById('title');
 const formAuthor = document.getElementById('author');
 const form = document.getElementById('form');
+
+const today = new Date();
+const date = document.getElementById('date');
+date.innerHTML = today.toDateString();
+
+const navItems = document.querySelectorAll('.nav-item');
+const sectionBooks = document.querySelectorAll('.sect');
 
 const newCollection = [];
 class Books {
@@ -40,10 +47,8 @@ class Books {
     for (let i = 0; i < this.collection.length; i += 1) {
       books.innerHTML += `  
       <div class="book-container">
-        <div class = "each-book">
-          <p class="book-title">"${this.collection[i].title}" by ${this.collection[i].author}</p> 
-          <button type="button" class="remove-button">Remove</button>
-        </div>
+        <p class="book-title">"${this.collection[i].title}" by ${this.collection[i].author}</p> 
+        <button type="button" class="remove-button">Remove</button>
       </div>
       `;
     }
@@ -70,6 +75,8 @@ function storageAvailable(type) {
 }
 
 if (storageAvailable('localStorage')) {
+  booksCollection.add({ title: 'book 1', author: 'author 1' });
+  booksCollection.add({ title: 'book 2', author: 'author 2' });
   booksCollection.checkStorage();
 
   booksCollection.showCollection();
@@ -84,8 +91,23 @@ if (storageAvailable('localStorage')) {
   form.addEventListener('submit', () => {
     booksCollection.add({ title: formTitle.value, author: formAuthor.value });
     booksCollection.save();
+    formTitle.value = '';
+    formAuthor.value = '';
   });
 
   // window.localStorage.clear();
   // save();
 }
+
+navItems.forEach((item, index) => {
+  item.addEventListener('click', () => {
+    for (let i = 0; i < navItems.length; i += 1) {
+      sectionBooks[i].style.display = 'none';
+      sectionBooks[index].style.display = 'flex';
+    }
+  });
+});
+
+navItems[0].addEventListener('click', () => {
+  window.location.reload();
+});
