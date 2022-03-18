@@ -1,3 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 h1 {
   text-align: center;
   font-size: 20px;
@@ -19,13 +35,13 @@ hr {
 }
 
 /* Nav-List Section */
-
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border: 3px solid black;
   padding: 0 10px;
+  margin: 5px;
 }
 
 .nav-list {
@@ -54,7 +70,7 @@ a:active {
 .date-section {
   margin: auto;
   width: 99%;
-  margin-bottom: 50px;
+  margin-bottom: 10rem;
 }
 
 #date {
@@ -64,6 +80,7 @@ a:active {
 
 /* Books List section */
 .books {
+  display: flex;
   margin: auto;
   flex-direction: column;
 }
@@ -155,13 +172,16 @@ a:active {
   font-size: 20px;
 }
 
+/* Footer */
 footer {
   border: 2px solid black;
   padding: 5px 20px;
+  width: 98%;
   margin: auto;
-  width: 95%;
   position: absolute;
   bottom: 5px;
+  right: 2.5px;
+  left: 2.5px;
 }
 
 @media (max-width: 700px) {

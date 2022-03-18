@@ -103,8 +103,8 @@ navItems.forEach((item, index) => {
   item.addEventListener('click', () => {
     for (let i = 0; i < navItems.length; i += 1) {
       sectionBooks[i].style.display = 'none';
-      sectionBooks[index].style.display = 'flex';
     }
+    sectionBooks[index].style.display = 'flex';
   });
 });
 
